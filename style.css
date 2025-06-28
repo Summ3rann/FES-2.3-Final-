@@ -179,7 +179,8 @@ header .row {
 }
 
 .header__content {
-    width: 40%
+    width: 40%;
+    position: relative;
 }
 
 h1 {
@@ -206,14 +207,14 @@ h1 {
     border-radius: 500px;
     border: 2px solid #e5e7eb;
     padding: 20px 192px 20px 32px;
-    color: #a0aec0;
+    color: #7f7f80;
     font-size: 16px;
     font-weight: 500;
     position: absolute;
     top: 0;
     bottom: 0;
     z-index: 1;
-    transition: border-color 300ms;
+    transition: ease all 300ms;
 }
 
 .header__email--input:hover {
@@ -228,7 +229,7 @@ h1 {
     color: #fff;
     padding: 14px 32px;
     border:none;
-    border-radius: 9999px;
+    border-radius: 500px;
     margin: 8px;
 }
 
@@ -243,9 +244,7 @@ h1 {
 .img__customers {
     margin-top: 16px;
     padding-right: 128px;
-    opacity: 0.5
-
-
+    opacity: 0.5;
 }
 
 .header__img--wrapper {
@@ -259,6 +258,16 @@ h1 {
 
 .img {
     width: 100%
+}
+
+.header__blob {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0.05;
+    width: 256px;
+    height: 256px;
+    transform: matrix(1, 0, 0, 1, -150, -280);
 }
 
 /*
@@ -280,7 +289,6 @@ FEATURES
     flex-direction: column;
     align-items: center;
     margin:0 auto;
-
 }
 
 .section__tag {
@@ -306,9 +314,10 @@ FEATURES
     color: #7c8ba1;
 }
 
-.section__tag--features.section__title--features.section__title--features {
+.section__tag--features, .section__title--features, .section__para--features {    text-align: center;
     text-align: center;
 }
+
 .features {
     display: flex;
     justify-content: center;
@@ -359,6 +368,13 @@ FEATURES
     font-weight: 700;
     margin: 0;
 }
+
+.feature__para {
+    font-size: 16px;
+    font-weight: 500;
+    color:#7b8aa0
+}
+
 
 
 
@@ -441,6 +457,7 @@ steps
     position:relative;
     display: flex;
     align-items: center;
+    width: 50%;
 
 }
 
@@ -453,8 +470,10 @@ steps
     position: absolute;
     width: 80px;
     height: 80px;
-    right: 225px;
-    bottom: 40px;
+    right: 0px;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%) scaleX(1) scaleY(1);
     fill: rgb(100, 21, 255);
     opacity: .2;
     z-index: 0;
@@ -529,8 +548,7 @@ values
 }
 
 .values__content {
-    padding: 32px 0;
-    padding-left: 64px;
+    padding: 32px 64px 32px 0;
     position: relative;
 }
 
@@ -889,7 +907,7 @@ TESTIMONIALS
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 18px;
+    padding: 16px 17px;
     background: #edf2f7;
     border: none;
     border-radius: 50%;
@@ -919,9 +937,6 @@ START
 
 */
 
-#start .container {
-    
-}
 .start__container {
     padding: 96px 0;
     width: 100%;
@@ -1207,27 +1222,28 @@ SMALLER SCREENS
         max-width: 512px;
     }
 
-    .quality__img {
-        max-width: 512px;
-        max-height: fit-content;
-    }
-
-    .qualtiy__grid {
     
-    }
 
     .plan__bottom {
         padding: 32px 64px;
     }
+
     .btn__plan {
         max-width: none;
-       
+    }
+
+    .testimonials__img--wrapper {
+        width: 40%;
+    }
+
+    .testimonials__content {
+        width: 60%;
     }
 }
 
 @media (max-width: 1024px) {
 
-    .header.row {
+    .header__row {
         flex-direction: column;
         align-items: center;
     }
@@ -1239,22 +1255,158 @@ SMALLER SCREENS
         align-items: center;
     }
 
+    .header__content--para {
+        margin: 20px 0;
+        font-size: 16px;
+    }
+
     .header__content, .header__img--wrapper {
         width: 100%;
         max-width: 512px;
         margin: 0 auto;
     }
 
+    h1 {
+        font-size: 30px;
+    }
+
+    .header__customers--title, .header__img--wrapper {
+        margin-top: 48px;
+    }
+
+    .feature__row {
+        padding: 32px 8px;
+        margin: 0 16px;
+    }
+
+    .features {
+        max-width: 768px;
+    }
+
+     .feature {
+        width: calc(50%);
+     }
+
+    .section__title {
+        font-size: 36px;
+    }
+
+    .section__para {
+        font-size: 16px;
+    }
+
+    .value__list {
+        flex-direction: column;
+    }
+  
+    .section__title--pricing {
+        font-size: 48px;
+    }
+    .plans__list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .start__row {
+        flex-direction: column;
+    }
+    .start__title {
+        text-align: center;
+        width: 100%;
+        max-width: 512px;
+    }
+
+    .start__buttons {
+        width: auto;
+        margin-top: 24px;
+    }
+
+    .start__btn {
+        padding: 16px 32px;
+    }
+
 } 
 
 @media (max-width: 640px) {
+
     .container {
         padding: 80px 0px;
     }
+
+    .header__email {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .header__email--input {
+        position: static;
+        padding: 16px 0;
+        padding-left: 32px;
+        line-height: 1.5;
+    }
+
+    .header__email--btn {
+        width: 100%;
+        margin: 16px 0 0;
+        padding: 16 0;
+        line-height: 1.5;
+
+    }
+
+    .section__title--features {
+        font-size: 36px;
+    }
+
+    .section__para--features {
+        font-size: 14px;
+    }
+
+    .feature {
+        width: auto;
+        max-width: 384px;
+    }
     .feature__row {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;  
+    }
+
+    .feature__content {
+         margin-left: 0px;
+        margin-top: 16px;
         }
+    
+    .feature__para {
+        margin-top: 4px;
+        line-height: 2;
+    }
+
+    .quality__row {
+    flex-direction: column-reverse;
+    }
+
+    .quality__content, .quality__img--wrapper, .steps__content, .steps__img--wrapper, .values__content, .values__img, .testimonials__description, .testimonials__img {
+        width: 100%;
+        max-width: 448px;
+    }
+
+    .btn__quality {
+        
+    }
+    .section__tag {
+        font-size: 16px;
+        margin-top: ;
+    }
+    .section__title, .section__para, .section__tag {
+        text-align: center;
+    }
+    .section__title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .section__para {
+        font-size: 14px ;
+    }
 
     }
