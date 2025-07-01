@@ -1307,7 +1307,7 @@ SMALLER SCREENS
     }
     
     .testimonials__content {
-        padding-left: 0px;
+        padding-left:48px;
     }
 
     .testimonials__img--wrapper {
